@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:Aknakereso"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <Button Grid.Column="1" Grid.Row="0" Content="Restart"/>
+            <Button Grid.Column="2" Grid.Row="0"/>
+
+            <WrapPanel x:Name="_WP_Content" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                
+            </WrapPanel>
+        </Grid>
+    </Border>
 </Window>

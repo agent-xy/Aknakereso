@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aknakereso.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,14 @@ namespace Aknakereso
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow _MW_V;
         public MainWindow()
         {
             InitializeComponent();
+
+            _MW_V = this;
+
+            Back_End.Back_End_Main();
         }
     }
 }
