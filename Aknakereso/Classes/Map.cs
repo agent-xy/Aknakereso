@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
+using System.Windows.Media;
 
 namespace Aknakereso.Classes
 {
@@ -22,12 +24,12 @@ namespace Aknakereso.Classes
             {
                 for (int j = 0; j < Map_Matrix.GetLength(1); j++)
                 {
-                    Map_Matrix[i, j] = new Mezo(0, size);
+                    Map_Matrix[i, j] = new Mezo(0, size, i, j);
                 }
             }
         }
 
-        public void Akna_Generalas()
+        public void Akna_Generalas(int o, int p)
         {
             Console.WriteLine("Akna gen started");
             for (int i = 0; i < Akna_db; i++)
@@ -39,9 +41,9 @@ namespace Aknakereso.Classes
                     int m_i = rnd.Next(Map_Matrix.GetLength(0));
                     int m_j = rnd.Next(Map_Matrix.GetLength(1));
 
-                    if (Map_Matrix[m_i, m_j].Value != -1 && !Map_Matrix[m_i, m_j].Felfedve)
+                    if (Map_Matrix[m_i, m_j].Value >= 0 && !Map_Matrix[m_i, m_j].Felfedve)
                     {
-                        Map_Matrix[m_i, m_j].Value= -1;
+                        Map_Matrix[m_i, m_j].Value = -99;
                         ok = true;
 
                         Mezo_Feltoltes(m_i, m_j);
@@ -52,16 +54,13 @@ namespace Aknakereso.Classes
 
         public void Mezo_Feltoltes(int i, int j)
         {
-            for (int q = i - 1; q < 3 + i; q++)
+            for (int q = i - 1; q < 2 + i; q++)
             {
-                for (int k = j - 1; k < 3 + j; k++)
+                for (int k = j - 1; k < 2 + j; k++)
                 {
-                    if (q > 0 && q < Map_Matrix.GetLength(0) - 1 && k > 0 && k < Map_Matrix.GetLength(1) - 1)
+                    if (q >= 0 && q <= Map_Matrix.GetLength(0) - 1 && k >= 0 && k <= Map_Matrix.GetLength(1) - 1 && Map_Matrix[q, k].Value >= 0)
                     {
-                        if (Map_Matrix[q, k].Value != -1)
-                        {
-                            Map_Matrix[q, k].Value += 1;
-                        }
+                        Map_Matrix[q, k].Value += 1;
                     }
                 }
             }
@@ -69,17 +68,28 @@ namespace Aknakereso.Classes
 
         public void Ures_Kocka_Felfed(int i, int j)
         {
-            for (int q = i - 1; q < 3 + i; q++)
+            for (int q = i - 1; q < 2 + i; q++)
             {
-                for (int k = j - 1; k < 3 + j; k++)
+                for (int k = j - 1; k < 2 + j; k++)
                 {
-                    if (q > 0 && q < Map_Matrix.GetLength(0) - 1 && k > 0 && k < Map_Matrix.GetLength(1) - 1)
+                    if (q >= 0 && q <= Map_Matrix.GetLength(0) - 1 && k >= 0 && k <= Map_Matrix.GetLength(1) - 1)
                     {
-                        if (Map_Matrix[q, k].Value == 0)
+                        if (Map_Matrix[q, k].Value == 0 && !Map_Matrix[q, k].Felfedve)
                         {
-                            Map_Matrix[q, k].Value += 1;
+                            Map_Matrix[q, k].Click_Show();
                         }
                     }
+                }
+            }
+        }
+
+        public void Show_All_Bomb()
+        {
+            for (int i = 0; i < Map_Matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < Map_Matrix.GetLength(1); j++)
+                {
+                    Map_Matrix[i, j].Click_Show();
                 }
             }
         }

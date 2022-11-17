@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aknakereso"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Border>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -18,8 +18,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="1" Grid.Row="0" Content="Restart"/>
-            <Button Grid.Column="2" Grid.Row="0"/>
+            <Button Grid.Column="1" Grid.Row="0" Content="Restart" Click="Button_Click"/>
+            <Button Grid.Column="2" Grid.Row="0" x:Name="_Btn_Point" Click="_Btn_Point_Click" BorderBrush="Gray"/>
 
             <WrapPanel x:Name="_WP_Content" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
                 

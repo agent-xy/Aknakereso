@@ -6,9 +6,9 @@ namespace Aknakereso.Classes
 {
     class Back_End
     {
-        private static Map Main_Map;
-
-        public static bool First_Click = false;
+        public static Map Main_Map;
+        public static bool First_Click;
+        public static bool Pointer_Bube;
 
         private static int Aknak_Szama = 12;
         private static int Map_Merete = 12;
@@ -16,11 +16,15 @@ namespace Aknakereso.Classes
         
         public static void Back_End_Main()
         {
+            First_Click = false;
+            Pointer_Bube = false;
+
             _Load_Config();
         }
 
         private static void _Load_Config()
         {
+            MainWindow._MW_V._WP_Content.Children.Clear();
             Main_Map = new Map(Map_Merete, Aknak_Szama, Kocka_Meret);
             _Show_Map_Matrix();
         }
@@ -28,8 +32,8 @@ namespace Aknakereso.Classes
         private static void _Show_Map_Matrix()
         {
 
-            MainWindow._MW_V.Width = Map_Merete * Kocka_Meret;
-            MainWindow._MW_V.Height = (Map_Merete * Kocka_Meret) + 60;
+            MainWindow._MW_V.Width = Map_Merete * (Kocka_Meret + 2);
+            MainWindow._MW_V.Height = (Map_Merete * (Kocka_Meret + 5)) + 60;
             MainWindow._MW_V._WP_Content.Width = Map_Merete * Kocka_Meret;
             MainWindow._MW_V._WP_Content.Height = Map_Merete * Kocka_Meret;
 
@@ -42,9 +46,9 @@ namespace Aknakereso.Classes
             }
         }
 
-        public static void _First_Click_Started()
+        public static void _First_Click_Started(int o, int p)
         {
-            Main_Map.Akna_Generalas();
+            Main_Map.Akna_Generalas(o, p);
         }
     }
 }

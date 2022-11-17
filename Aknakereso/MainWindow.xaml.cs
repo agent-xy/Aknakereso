@@ -28,7 +28,30 @@ namespace Aknakereso
 
             _MW_V = this;
 
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             Back_End.Back_End_Main();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Back_End.Back_End_Main();
+        }
+
+        private void _Btn_Point_Click(object sender, RoutedEventArgs e)
+        {
+            if (_Btn_Point.Background != Brushes.Green)
+            {
+                _Btn_Point.Background = Brushes.Green;
+                Back_End.Pointer_Bube = true;
+            } else
+            {
+                Back_End.Pointer_Bube = false;
+                _Btn_Point.Background = default;
+            }
         }
     }
 }
