@@ -74,7 +74,7 @@ namespace Aknakereso.Classes
                 {
                     if (q >= 0 && q <= Map_Matrix.GetLength(0) - 1 && k >= 0 && k <= Map_Matrix.GetLength(1) - 1)
                     {
-                        if (Map_Matrix[q, k].Value == 0 && !Map_Matrix[q, k].Felfedve)
+                        if (Map_Matrix[q, k].Value >= 0 && !Map_Matrix[q, k].Felfedve)
                         {
                             Map_Matrix[q, k].Click_Show();
                         }
